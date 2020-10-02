@@ -101,7 +101,10 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    
+        cd openwrt
+        useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>Date: %cd<br/>Commit: %s")
+        echo "::set-env name=useVersionInfo::$useVersionInfo"
+
     - name: 加载源,patch补丁和自定义设置
       run: |
         cp -Rf `find ./ -maxdepth 1 -type d ! -path './openwrt' ! -path './'` openwrt
@@ -242,6 +245,7 @@ jobs:
             ⛄ WeTransfer(国外高速🚀下载)： ${{ env.WETRANSFER_URL }}
             
             🌴 链接有效期为7天，无需注册直接下载 🐤
+            ${{ env.useVersionInfo }}
         files: ${{ env.FIRMWARE }}/*
 
     - name: 微信通知
