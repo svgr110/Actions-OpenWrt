@@ -21,7 +21,7 @@ on:
 #编辑任意指定文件触发开始编译
   push:
     branches:
-      - ma
+      - master
     paths:
      - '123'
 
