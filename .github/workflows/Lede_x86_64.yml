@@ -76,7 +76,7 @@ jobs:
     
     - name: 微信通知
       if: env.SERVERCHAN_SCKEY == 'true'
-      uses: emon100/Action-Serverchan@main
+      uses: emon100/Action-Serverchan@master
       with:
         SCKEY: ${{ secrets.SCKEY }}
         text: 开始编译${{matrix.target}}啦
@@ -246,7 +246,7 @@ jobs:
 
     - name: 微信通知
       if: steps.organizer.outputs.status == 'success' && env.SERVERCHAN_SCKEY == 'true'
-      uses: emon100/Action-Serverchan@main
+      uses: emon100/Action-Serverchan@master
       with:
         SCKEY: ${{ secrets.SCKEY }}
         text: 恭喜主人${{matrix.target}}固件编译成功！
