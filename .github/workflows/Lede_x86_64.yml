@@ -60,19 +60,19 @@ jobs:
     - name: 检测脚本设置
       run: |
         source "${GITHUB_WORKSPACE}/build/${{matrix.target}}/settings.ini"
-        echo "::set-env name=REPO_URL::${REPO_URL}"
-        echo "::set-env name=REPO_BRANCH::${REPO_BRANCH}"
-        echo "::set-env name=CONFIG_FILE::${CONFIG_FILE}"
-        echo "::set-env name=WXFB_MESSAGE::${WXFB_MESSAGE}"
-        echo "::set-env name=DIY_P1_SH::${DIY_P1_SH}"
-        echo "::set-env name=DIY_P2_SH::${DIY_P2_SH}"
-        echo "::set-env name=SSH_ACTIONS::${SSH_ACTIONS}"
-        echo "::set-env name=UPLOAD_BIN_DIR::${UPLOAD_BIN_DIR}"
-        echo "::set-env name=UPLOAD_CONFIG::${UPLOAD_CONFIG}"
-        echo "::set-env name=UPLOAD_FIRMWARE::${UPLOAD_FIRMWARE}"
-        echo "::set-env name=UPLOAD_COWTRANSFER::${UPLOAD_COWTRANSFER}"
-        echo "::set-env name=UPLOAD_RELEASE::${UPLOAD_RELEASE}"
-        echo "::set-env name=SERVERCHAN_SCKEY::${SERVERCHAN_SCKEY}"
+        echo "action_state=REPO_URL::${REPO_URL}" >> $GITHUB_ENV
+        echo "action_state=REPO_BRANCH::${REPO_BRANCH}" >> $GITHUB_ENV
+        echo "action_state=CONFIG_FILE::${CONFIG_FILE}" >> $GITHUB_ENV
+        echo "action_state=WXFB_MESSAGE::${WXFB_MESSAGE}" >> $GITHUB_ENV
+        echo "action_state=DIY_P1_SH::${DIY_P1_SH}" >> $GITHUB_ENV
+        echo "action_state=DIY_P2_SH::${DIY_P2_SH}" >> $GITHUB_ENV
+        echo "action_state=SSH_ACTIONS::${SSH_ACTIONS}" >> $GITHUB_ENV
+        echo "action_state=UPLOAD_BIN_DIR::${UPLOAD_BIN_DIR}" >> $GITHUB_ENV
+        echo "action_state=UPLOAD_CONFIG::${UPLOAD_CONFIG}" >> $GITHUB_ENV
+        echo "action_state=UPLOAD_FIRMWARE::${UPLOAD_FIRMWARE}" >> $GITHUB_ENV
+        echo "action_state=UPLOAD_COWTRANSFER::${UPLOAD_COWTRANSFER}" >> $GITHUB_ENV
+        echo "action_state=UPLOAD_RELEASE::${UPLOAD_RELEASE}" >> $GITHUB_ENV
+        echo "action_state=SERVERCHAN_SCKEY::${SERVERCHAN_SCKEY}" >> $GITHUB_ENV
     
     - name: 微信通知
       uses: emon100/Action-Serverchan@master
