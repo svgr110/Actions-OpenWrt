@@ -183,7 +183,7 @@ jobs:
         find -name "*vmlinuz*" | xargs -i mv -f {} packages
         find -name "*esxi.vmdk*" | xargs -i mv -f {} packages
         rm -rf packages
-        echo "::set-output name=FIRMWARE::$PWD"
+        echo "FIRMWARE::$PWD" >> $GITHUB_PATH
         echo "::set-output name=status::success"
 
     - name: 上传.config配置文件在github空间
