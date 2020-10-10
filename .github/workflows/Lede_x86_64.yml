@@ -37,6 +37,7 @@ on:
 
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
   SCKEY: ${{ secrets.SCKEY }}
   GITHUB_RELEASE: https://github.com/281677160/Actions-OpenWrt/releases
@@ -263,3 +264,18 @@ jobs:
               
               
               祝小主人见人爱，花见花开，车见车载，天天好心情🎈！！！
+
+    - name: Remove Old Artifacts
+      uses: c-hive/gha-remove-artifacts@v1
+      with:
+        age: '1 day'
+        skip-recent: 3
+
+    - name: Remove Old Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 3
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
