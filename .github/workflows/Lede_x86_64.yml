@@ -135,7 +135,7 @@ jobs:
          mv build/${{matrix.target}}/$CONFIG_FILE .config
         make defconfig
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME" >> $GITHUB_ENV
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
     
     - name: SSH远程连接服务器配置固件
       uses: P3TERX/debugger-action@main
